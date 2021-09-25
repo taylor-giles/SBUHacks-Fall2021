@@ -1,5 +1,6 @@
 import * as OBJECTS from '../resource-objects/GameplayObjects.js';
 import Modal from '../modal/Modal.js'
+import ResourceManager from '../ResourceManager.js';
 
 export default class AppModel {
     constructor () {
@@ -13,6 +14,7 @@ export default class AppModel {
 
     loadDefault() {
         this.loadTab("industry");
+        ResourceManager.stopTime = false;
     }
 
     loadTab(tab_name) {
@@ -28,8 +30,11 @@ export default class AppModel {
             return;
 
         if(this.currentTab !== null) {
-            let old_tab = this.tabs[this.currentTab];
-            this.workspace.removeChild(old_tab);
+            this.workspace.innerHTML = "";
+            // let old_tab = this.tabs[this.currentTab];
+            // if(this.workspace.contains(old_tab)){
+            //     this.workspace.removeChild(old_tab);
+            // }
         }
         
         /* Set current open tab */
@@ -115,14 +120,6 @@ export default class AppModel {
 
         this.tabs["eventModal"] = modal;
         this.loadTab("eventModal");
-    }
-
-    createIntro() {
-        const part1 = '../../../images/Intro part 1.png';
-        const part2 = '../../../images/Intro part 2.png';
-        const part3 = '../../../images/Intro part 3.png';
-    
-        
     }
 
     createTabs() {

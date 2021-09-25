@@ -2,6 +2,8 @@
  * App controller class that handles all of the even handler listeners
  */
 
+import ResourceManager from "../ResourceManager.js";
+
 export default class AppController {
     constructor () {
         this.tab_names = ["industry", "agriculture", "structures", "robots", "overview"];
@@ -25,6 +27,7 @@ export default class AppController {
             button.onmousedown = (event) => {
                 /* Update the list currently viewed */
                 this.appModel.loadTab(tab_name);
+                ResourceManager.stopTime = false;
             }
         }
     }
