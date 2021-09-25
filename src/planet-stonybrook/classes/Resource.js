@@ -1,6 +1,3 @@
-
-//import { Helpers } from "../common/Helpers.js";
-
 export const TICK_SPEED = 50;
 
 /**
