@@ -6,6 +6,5 @@ export default class Event {
         this.doEvent = doEvent;
         this.finishEvent = finishEvent;
         this.duration = duration;
-        this.timer = 0;
     }
 }
