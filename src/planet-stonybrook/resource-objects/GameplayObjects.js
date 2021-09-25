@@ -96,6 +96,7 @@ export const INVASION = new Event("Invasion", "Some rogue aliens are extracting 
 //FIRE
 const FIRE_DO = function(){
     MILL.isCreated = false;
+    MILL.updateCard();
 }
 const FIRE_FINISH = function(){}
 export const FIRE = new Event("Fire", "Where was the fire safety inspector? Your mill has caught on fire!", "../../../Images/New/Flame Card.png", 0, FIRE_DO, FIRE_FINISH);
@@ -129,6 +130,7 @@ export const GEESE = new Event("Geese", "Peace was never an option. The geese ar
 //STONEDOG
 const STONEDOG_DO = function(){
     REFINERY.isCreated = false;
+    REFINERY.updateCard();
 }
 const STONEDOG_FINISH = function(){}
 export const STONEDOG = new Event("Stone Dog Attack", "The Stone Dog has arrived, and it’s going after the refinery!", "../../../Images/New/Stone Dog Card.png", 0, STONEDOG_DO, STONEDOG_FINISH);

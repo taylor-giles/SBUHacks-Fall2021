@@ -86,7 +86,7 @@ export default class ResourceManager {
 
             for(const structure of OBJECTS.ALL_STRUCTURES){
                 if(structure.createButton){
-                    if(structure.canAfford()){
+                    if(structure.canAfford() && !structure.isCreated){
                         structure.createButton.classList.add("button-active");
                         structure.createButton.classList.remove("button-disabled");
                     } else {
