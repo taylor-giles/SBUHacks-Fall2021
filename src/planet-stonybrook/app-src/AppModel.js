@@ -62,6 +62,13 @@ export default class AppModel {
         /* TODO: */
     }
 
+    createRobots() {
+        const cards = document.createElement('div');
+        cards.id = "robots-tab-container";
+    
+        /* TODO: */
+    }
+
     createOverview() {
         const cards = document.createElement('div');
         cards.id = "overview-tab-container";
