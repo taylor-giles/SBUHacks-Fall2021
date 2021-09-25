@@ -9,6 +9,8 @@ import { HEALTH_BAR } from './resource-objects/OverviewObjects.js';
  * Runner of all passive resource gains.
  */
 const PASSIVE_HEALTH_LOSS = 1; //The amount of health lost per tick
+var activeEventTimer = 0;
+var activeEvent = null;
 export const ALL_RESOURCES = OBJECTS.ALL_INDUSTRY_RESOURCES.concat(OBJECTS.ALL_AGRICULTURE_RESOURCES);
 export const calculateAvailableFood = function(){
     let totalFood = 0;
@@ -20,8 +22,6 @@ export const calculateAvailableFood = function(){
 export default class ResourceManager {
     constructor(appController, healthBar){
         setInterval(this.runTick, TICK_SPEED);
-        this.activeEvent = null;
-        this.activeEventTimer = 0;
         this.controller = appController;
         this.healthBar = healthBar;
     }
@@ -31,17 +31,19 @@ export default class ResourceManager {
      */
     runTick(){
         //If there is an event...
-        if(this.activeEvent){
+        if(activeEvent){
             //Check its timer. If the duration has expired...
-            if(this.activeEventTimer++ >= this.activeEvent.duration){
+            if(activeEventTimer++ >= activeEvent.duration){
                 //Finish the event
-                this.activeEvent.finishEvent();
-                this.activeEvent = null;
-                this.activeEventTimer = 0;
+                activeEvent.finishEvent();
+                activeEvent = null;
+                activeEventTimer = 0;
             }
         } else {
-            if(Math.random() > EVENT_CHANCE){
-                //TODO: Pick and activate a random event
+            if(Math.random() < EVENT_CHANCE){
+                activeEvent = OBJECTS.ALL_EVENTS[Math.floor(Math.random() * OBJECTS.ALL_EVENTS.length)];
+                activeEvent.doEvent();
+                console.log("Running event " + activeEvent.name);
             }
         }
 
