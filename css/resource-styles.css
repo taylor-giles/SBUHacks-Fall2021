@@ -1,14 +1,19 @@
 .resource-card {
-  font-size: 18pt;
   margin: 10px;
   padding: 20px;
   border-radius: 15px;
   width: 100%;
 }
 
+.description-container {
+    width: 30%;
+    padding: 10px;
+}
+
 .horizontal-arrangement {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .vertical-arrangement {
@@ -18,5 +23,13 @@
 }
 
 .description-text {
-  font-size: 18pt;
+  font-size: 15pt;
+}
+
+.name-text{
+    font-size: 18pt;
+}
+
+.amount-text {
+    font-size: 18pt;
 }

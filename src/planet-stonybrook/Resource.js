@@ -1,4 +1,6 @@
 
+//import { Helpers } from "../common/Helpers.js";
+
 /**
  * Resource.js
  * 
@@ -71,25 +73,30 @@ export default class Resource {
         const nameContainer = document.createElement('div');
         nameContainer.classList = '';
         nameContainer.classList.add('vertical-arrangement');
+        nameContainer.classList.add('description-container');
 
         //Create and add name text
         const nameText = document.createElement('div');
         nameText.id = this.name + "-name";
         nameText.innerHTML = this.name;
+        nameText.classList = 'name-text';
         nameContainer.appendChild(nameText);
 
         //Create and add description text
         const descText = document.createElement('div');
         descText.id = this.name + "-desc";
         descText.innerHTML = this.description;
+        //descText.classList = 'description-text';
         nameContainer.appendChild(descText);
 
         //Add name and description div
         card.appendChild(nameContainer);
 
         //Create and add div for amount
-        const amtText = document.createTextNode(this.amount);
+        const amtText = document.createElement('div');
         amtText.id = this.name + "-amt";
+        amtText.innerHTML = this.amount;
+        amtText.classList = 'amount-text';
         card.appendChild(amtText);
 
         //Create and add div for collection info/build button
