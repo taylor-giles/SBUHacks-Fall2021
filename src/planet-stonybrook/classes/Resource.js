@@ -1,7 +1,7 @@
 import { HEALTH_BAR } from "../resource-objects/OverviewObjects.js";
 
 
-export const TICK_SPEED = 50;
+export const TICK_SPEED = 100;
 
 /**
  * Resource.js

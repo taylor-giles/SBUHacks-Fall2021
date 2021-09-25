@@ -8,7 +8,7 @@ import { HEALTH_BAR } from './resource-objects/OverviewObjects.js';
  * This class handles all of the interactions between resources.
  * Runner of all passive resource gains.
  */
-const PASSIVE_HEALTH_LOSS = 0.01; //The amount of health lost per tick
+const PASSIVE_HEALTH_LOSS = 0.1; //The amount of health lost per tick
 var activeEventTimer = 0;
 var activeEvent = null;
 export const ALL_RESOURCES = OBJECTS.ALL_INDUSTRY_RESOURCES.concat(OBJECTS.ALL_AGRICULTURE_RESOURCES);

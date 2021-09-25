@@ -14,32 +14,32 @@ const METAL_COSTS = [new Cost(ROCKS, 5)];
 export const METAL = new Resource("Metal", "Refined metal used for creating structures", "../../../Images/New/Metal Card.png", "kg", INDUSTRY_NAME, 0, 0, METAL_COSTS, null);
 
 //WATER
-export const WATER = new Resource("Water", "", "../../images/New/Water Card.png", "L", AGRICULTURE_NAME, 1, 0, null, null);
+export const WATER = new Resource("Water", "The planet's water harvester automatically collects water to grow corn, wheat, or make bread", "../../images/New/Water Card.png", "L", AGRICULTURE_NAME, 1, 0, null, null);
 
 //MILL
 const MILL_COSTS = [new Cost(WATER, 15), new Cost(METAL, 20)];
-export const MILL = new Structure("Mill", "", "../../../Images/New/Mill Card.png", MILL_COSTS);
+export const MILL = new Structure("Mill", "Create bread to fuel your mind and body", "../../../Images/New/Mill Card.png", MILL_COSTS);
 
 //REFINERY
 const REFINERY_COSTS = [new Cost(METAL, 30)];
-export const REFINERY = new Structure("Refinery", "", "../../../Images/New/Refinery Card.png", REFINERY_COSTS);
+export const REFINERY = new Structure("Refinery", "Convert crude oil to fuel", "../../../Images/New/Refinery Card.png", REFINERY_COSTS);
 
 //DRILL
 const DRILL_COSTS = [new Cost(METAL, 30)];
-export const DRILL = new Structure("Drill", "", "../../../Images/New/Drill Card.png", DRILL_COSTS);
+export const DRILL = new Structure("Drill", "Used to extract oil from the planet's surface", "../../../Images/New/Drill Card.png", DRILL_COSTS);
 
 //CORN
 const CORN_COSTS = [new Cost(WATER, 2)];
-export const CORN = new Resource("Corn", "", "../../../Images/New/Corn Card.png", "Cobs", AGRICULTURE_NAME, 0, 1, CORN_COSTS, null);
+export const CORN = new Resource("Corn", "Make sure to bring corn on the rocket as a snack!", "../../../Images/New/Corn Card.png", "Cobs", AGRICULTURE_NAME, 0, 1, CORN_COSTS, null);
 
 //WHEAT
 const WHEAT_COSTS = [new Cost(WATER, 4)];
 const WHEAT_REQUIREMENTS = [MILL];
-export const WHEAT = new Resource("Wheat", "", "../../../Images/New/Wheat Card.png", "kg", AGRICULTURE_NAME, 0, 0, WHEAT_COSTS, WHEAT_REQUIREMENTS);
+export const WHEAT = new Resource("Wheat", "Harvest wheat to create bread with the Mill", "../../../Images/New/Wheat Card.png", "kg", AGRICULTURE_NAME, 0, 0, WHEAT_COSTS, WHEAT_REQUIREMENTS);
 
 //BREAD
 const BREAD_COSTS = [new Cost(WATER, 15), new Cost(WHEAT, 5)];
-export const BREAD = new Resource("Bread", "", "../../../Images/New/Bread Card.png", "Loaves", AGRICULTURE_NAME, 0, 3, BREAD_COSTS, null);
+export const BREAD = new Resource("Bread", "Bon appetit! Watch out for pesky geese, though.", "../../../Images/New/Bread Card.png", "Loaves", AGRICULTURE_NAME, 0, 3, BREAD_COSTS, null);
 
 //OIL
 const OIL_REQUIREMENTS = [DRILL];
