@@ -12,6 +12,10 @@ export default class AppController {
         this.initHandlers();
     }
 
+    initHandlers() {
+        this.initTabs();
+    }
+
     /* Initiate the Tab clicking ability */
     initTabs() {
         for(let tab_name of this.tab_names) {
@@ -24,10 +28,5 @@ export default class AppController {
             }
             
         }
-    }
-
-
-    initHandlers() {
-        this.initTabs();
     }
 }
