@@ -59,18 +59,16 @@ export default class Resource {
                     return false;
                 }
             }
-
-            if(this.requiredStructures){
-                for(let structure of this.requiredStructures){
-                    if(!structure.isCreated){
-                        return false;
-                    }
+        } 
+        if(this.requiredStructures){
+            for(let structure of this.requiredStructures){
+                if(!structure.isCreated){
+                    return false;
                 }
             }
-            return true;
-        } else {
-            return true;
         }
+        
+        return true;
     }
 
     create(amount=1){ 
