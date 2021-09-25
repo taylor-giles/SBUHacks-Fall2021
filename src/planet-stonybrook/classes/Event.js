@@ -9,4 +9,9 @@ export default class Event {
         this.finishEvent = finishEvent;
         this.duration = duration;
     }
+
+    createModal(){
+        // Format: img, title, descText, hook, buttonName, model
+        this.model.createEventModal(this.imgSrc, this.name, this.description);
+    }
 }

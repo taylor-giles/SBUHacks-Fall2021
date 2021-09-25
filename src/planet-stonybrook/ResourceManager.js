@@ -20,9 +20,15 @@ export const calculateAvailableFood = function(){
     return totalFood;
 }
 export default class ResourceManager {
-    constructor(appController, healthBar){
+    constructor(appModel, healthBar){
+        //Set the model for the events
+        for(let event in OBJECTS.ALL_EVENTS){
+            OBJECTS.ALL_EVENTS[event].model = appModel;
+        }
+
+        //Run runTick() every tick
         setInterval(this.runTick, TICK_SPEED);
-        this.controller = appController;
+        this.controller = appModel;
         this.healthBar = healthBar;
     }
 
@@ -42,6 +48,7 @@ export default class ResourceManager {
         } else {
             if(Math.random() < EVENT_CHANCE){
                 activeEvent = OBJECTS.ALL_EVENTS[Math.floor(Math.random() * OBJECTS.ALL_EVENTS.length)];
+                activeEvent.createModal();
                 activeEvent.doEvent();
                 console.log("Running event " + activeEvent.name);
             }

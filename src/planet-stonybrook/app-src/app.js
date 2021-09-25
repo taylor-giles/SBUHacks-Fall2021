@@ -11,13 +11,13 @@ import HealthBar from '../overview/HealthBar.js';
 export class App {
     constructor() {
         /* Create instances */
-        this.controller = new AppController();
         this.model = new AppModel();
+        this.controller = new AppController();
 
         /* Setup the components */
         this.controller.initController(this.model);
 
-        this.resourceManager = new ResourceManager(this.controller);
+        this.resourceManager = new ResourceManager(this.model);
     }
 
     /**
