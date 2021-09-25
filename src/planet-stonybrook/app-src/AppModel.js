@@ -85,14 +85,14 @@ export default class AppModel {
         /* TODO: */
     }
 
-    createIntroModal() {
+    createIntroModal(img, title, desc, hook, btnName) {
         const modal = document.createElement('div');
         modal.id = "modal-tab";
 
         // Fromat: img, title, descText, hook, buttonName, model
         //const yuck = new Modal("../../../images/Bread Card.png","TITLE", "HELLO", null, "Exit", this);
         
-        const yuck = new Modal(img, title, desc, null, "Exit", this)
+        const yuck = new Modal(img, title, desc, hook, btnName, this);
         const blah = yuck.createModal();
 
         modal.appendChild(blah);
@@ -108,7 +108,7 @@ export default class AppModel {
         // Fromat: img, title, descText, hook, buttonName, model
         //const yuck = new Modal("../../../images/Bread Card.png","TITLE", "HELLO", null, "Exit", this);
         
-        const yuck = new Modal(img, title, desc, null, "Exit", this)
+        const yuck = new Modal(img, title, desc, null, "Exit", this);
         const blah = yuck.createModal();
 
         modal.appendChild(blah);
