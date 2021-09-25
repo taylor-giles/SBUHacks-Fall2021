@@ -1,6 +1,5 @@
-import Resource from '../classes/Resource.js'
-import Structure from '../classes/Structure.js'
-import * as INDUSTRY_RESOURCES from '../resource-objects/IndustryResources.js'
+import AppController from './AppController.js';
+import AppModel from './AppModel.js';
 //import ResourceManager from './ResourceManager'
 
 /*
@@ -10,7 +9,12 @@ import * as INDUSTRY_RESOURCES from '../resource-objects/IndustryResources.js'
 
 export class App {
     constructor() {
-        
+        /* Create instances */
+        this.controller = new AppController();
+        this.model = new AppModel();
+
+        /* Setup the components */
+        this.controller.initController(this.model);
     }
 
     /**
@@ -19,14 +23,15 @@ export class App {
      */
     launch() {
         console.log("Starting up the app");
-        
-        /* Test creating the resource instance */
-        let workspace = document.getElementById("workspace-edit");
 
-        workspace.appendChild(INDUSTRY_RESOURCES.ROCKS.card);
-        workspace.appendChild(INDUSTRY_RESOURCES.METAL.card);
-        workspace.appendChild(INDUSTRY_RESOURCES.ROCKET.card);
-        
+        /* Setup all the tabs */
+        this.model.createTabs();
+
+        /* Now set the default tab - the industry tab */
+        this.model.loadTab("industry");
+
+
+        /* TODO: Call resource Manager  */
     }
 
 }
