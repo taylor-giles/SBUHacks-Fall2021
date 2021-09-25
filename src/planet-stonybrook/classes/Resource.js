@@ -1,7 +1,7 @@
 
 //import { Helpers } from "../common/Helpers.js";
 
-export const TICK_SPEED = 1000;
+export const TICK_SPEED = 50;
 
 /**
  * Resource.js
@@ -20,7 +20,7 @@ export const TICK_SPEED = 1000;
  *      costs: Boolean - true if this resource is gained passively, false otherwise
  */
 export default class Resource {
-    constructor(name, description, imgSrc, unitName, category, passiveAmt, costs, requiredStructures){
+    constructor(name, description, imgSrc, unitName, category, passiveAmt, isEdible, costs, requiredStructures){
         /* From parameters */
         this.name = name;
         this.description = description;
@@ -30,6 +30,7 @@ export default class Resource {
         this.costs = costs;
         this.requiredStructures = requiredStructures;
         this.passiveAmt = passiveAmt;
+        this.isEdible = isEdible;
         
         //Initialize amount to 0
         this.amount = 0;
@@ -72,7 +73,7 @@ export default class Resource {
     }
 
     create(amount=1){ 
-        console.log("Creating " + this.name);
+        //console.log("Creating " + this.name);
         if(this.canAfford()){
             if(this.costs){
                 for(let cost of this.costs){
@@ -91,6 +92,7 @@ export default class Resource {
     updateCard(){
         //let amtText = document.getElementById(""+this.name + "-amt");
         this.amtText.innerHTML = this.amount + " " + this.unitName;
+        //TODO: Update button state
     }
 
     createCard(){
@@ -166,15 +168,17 @@ export default class Resource {
             //Update cost display
             costString = "Cost: ";
             for(let cost of this.costs){
-                costString += cost.amount + " " + cost.resource.name;
+                costString += cost.amount + " " + cost.resource.unitName + " " + cost.resource.name;
                 costString += "<br />";
             }
 
             //Create and add "create" button
-            const createButton = document.createElement('img');
+            const createButton = document.createElement('button');
             createButton.id = this.name + "-btn_create";
-            createButton.src = "../../../Images/New/Create.png"
+            createButton.innerHTML = "Create";
+            createButton.classList = 'create-button';
             createButton.onmousedown = (ev) => {this.create();} 
+            this.createButton = createButton;
             createDiv.appendChild(createButton);
         }
         //Update cost display with structure requirements
