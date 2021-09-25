@@ -5,9 +5,6 @@
 export default class AppController {
     constructor () {
         this.tab_names = ["industry", "agriculture", "structures", "robots", "overview"];
-    
-        this.modal = document.getElementById("event-modal");
-        this.span = document.getElementsByClassName("close")[0];
     }
 
     initController(appModel) {
