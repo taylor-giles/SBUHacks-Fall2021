@@ -6,6 +6,8 @@
   --swatch-contrast-hover: #2b2d30;
   --swatch-status-bar-background: #838c9b;
   --swatch-status-bar-foreground: #d84a08;
+  --swatch-button-active: #2b9422;
+  --swatch-button-disabled: #969696;
   /* --swatch-industry:TODO:;
   --swatch-agriculture:TODO:;
   --swatch-structures:TODO:;

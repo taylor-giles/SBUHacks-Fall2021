@@ -40,5 +40,28 @@ export default class ResourceManager {
                 resource.create(resource.passiveAmt);
             }
         }
+
+        // Check Thresholds to potentially update buttons
+        for(const resource of ALL_RESOURCES) {
+            let num_reached = 0;
+            if(resource.costs) {
+                for(const cost of resource.costs) {
+                    if(cost) {
+                        if(cost.resource.amount >= cost.amount) {
+                            num_reached += 1;
+                        }
+                    }
+                }
+                let btn = resource.createButton;
+                if(num_reached == resource.costs.length) {
+                    btn.classList.add("button-active");
+                    btn.classList.remove("button-disabled");
+                }
+                else {
+                    btn.classList.remove("button-active");
+                    btn.classList.add("button-disabled");
+                }
+            }
+        }
     }
 }
