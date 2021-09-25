@@ -3,5 +3,9 @@
   --swatch-primary: #e1ce71;
   --swatch-complement: #d9a56d;
   --swatch-contrast: #424b54;
-  --bounceEasing: cubic-bezier(0.51, 0.92, 0.24, 1.15);
+  --swatch-contrast-hover: #2b2d30;
+  /* --swatch-industry:TODO:;
+  --swatch-agriculture:TODO:;
+  --swatch-structures:TODO:;
+  --swatch-overview:TODO:; */
 }

@@ -1,7 +1,7 @@
 @import "./colors.css";
 
 #root {
-  background-color: var(--swatch-primary);
+  background-color: var(--swatch-foundation);
   font-family: "Lexend Exa";
   position: absolute;
   width: 80%;
@@ -17,7 +17,7 @@
   width: 100%;
   height: 5%;
   text-align: center;
-  background-image: linear-gradient(to bottom, #b8b808, #636723);
+  background-color: var(--swatch-primary);
   color: white;
   font-size: 24pt;
   border-color: black;
@@ -26,10 +26,36 @@
   border-radius: 10px;
 }
 
+#planet-stonybrook-tabs {
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 5%;
+  height: 5%;
+  background-color: var(--swatch-contrast);
+}
+
+.planet-stonybrook-tab {
+  position: relative;
+  background-color: var(--swatch-complement);
+  top: 5%;
+  font-family: "Lexend Exa";
+  bottom: 5%;
+  text-align: center;
+  cursor: pointer;
+  float: left;
+  height: 90%;
+  width: 25%;
+}
+
+.planet-stonybrook-tab:hover {
+  background-color: var(--swatch-contrast-hover);
+}
+
 #planet-workspace {
   position: absolute;
   left: 0%;
-  top: 5%;
+  top: 10%;
   width: 100%;
   height: 100%;
   background-color: var(--swatch-accent);
