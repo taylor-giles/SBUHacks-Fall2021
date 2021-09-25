@@ -1,5 +1,6 @@
 import AppController from './AppController.js';
 import AppModel from './AppModel.js';
+import ResourceManager from '../ResourceManager.js';
 //import ResourceManager from '../ResourceManager.js'
 
 /*
@@ -13,9 +14,10 @@ export class App {
         this.controller = new AppController();
         this.model = new AppModel();
 
-         //this.resourceManager = new ResourceManager(this.controller);
         /* Setup the components */
         this.controller.initController(this.model);
+
+        this.resourceManager = new ResourceManager(this.controller);
     }
 
     /**

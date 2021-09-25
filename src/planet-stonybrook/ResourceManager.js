@@ -1,4 +1,4 @@
-import * as OBJECTS from './resource-objects/GameplayObjects';
+import * as OBJECTS from './resource-objects/GameplayObjects.js';
 import { TICK_SPEED } from './classes/Resource.js';
 
 /**
@@ -9,7 +9,7 @@ import { TICK_SPEED } from './classes/Resource.js';
 export const ALL_RESOURCES = OBJECTS.ALL_INDUSTRY_RESOURCES.concat(OBJECTS.ALL_AGRICULTURE_RESOURCES);
 export default class ResourceManager {
     constructor(appController){
-        setInterval(runTick, TICK_SPEED);
+        setInterval(this.runTick, TICK_SPEED);
         this.activeEvent = null;
         this.activeEventTimer = 0;
         this.controller = appController;
@@ -19,13 +19,8 @@ export default class ResourceManager {
      * Runner - this function runs every tick
      */
     runTick(){
-        this.eventTickAction();
-        this.passiveResourceTickAction();
-    }
-
-    eventTickAction(){
         //If there is an event...
-        if(activeEvent != null){
+        if(this.activeEvent){
             //Check its timer. If the duration has expired...
             if(this.activeEventTimer++ >= this.activeEvent.duration){
                 //Finish the event
@@ -36,14 +31,13 @@ export default class ResourceManager {
         } else {
             //TODO: Random chance for event
         }
-    }
 
-    passiveResourceCheckAction(){
+
         //Check for passive resources
         for(const resource of ALL_RESOURCES){
             if(!resource.costs){
                 //Passively increment
-                resource.add(resource.passiveAmt);
+                resource.create(resource.passiveAmt);
             }
         }
     }
