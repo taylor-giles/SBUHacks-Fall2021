@@ -23,6 +23,8 @@ export class App {
         let workspace = document.getElementById("workspace-edit");
 
         workspace.appendChild(INDUSTRY_RESOURCES.ROCKS.card);
+        workspace.appendChild(INDUSTRY_RESOURCES.METAL.card);
+        workspace.appendChild(INDUSTRY_RESOURCES.ROCKET.card);
     }
 
 }
