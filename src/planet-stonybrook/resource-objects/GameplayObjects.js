@@ -105,11 +105,17 @@ const INSOMNIA_DO = function(){
     ROCKS.passiveAmt /= 2;
     WATER.passiveAmt /= 2;
     OIL.passiveAmt /= 2;
+    ROCKS.updateCard();
+    WATER.updateCard();
+    OIL.updateCard();
 }
 const INSOMNIA_FINISH = function(){
     ROCKS.passiveAmt *= 2;
     WATER.passiveAmt *= 2;
     OIL.passiveAmt *= 2;
+    ROCKS.updateCard();
+    WATER.updateCard();
+    OIL.updateCard();
 }
 export const INSOMNIA = new Event("Insomnia", "You look tired! It’s taking you double the amount of time to gain materials.", "../../../Images/New/Insomnia Card.png", 50, INSOMNIA_DO, INSOMNIA_FINISH);
 

@@ -116,6 +116,7 @@ body {
   justify-content: center;
   align-content: center;
   flex-direction: column;
+  white-space: nowrap;
 }
 
 #available-food {

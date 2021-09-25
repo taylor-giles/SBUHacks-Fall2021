@@ -39,6 +39,11 @@ export default class Resource {
         this.card = this.createCard();
     }
 
+    disableButtons(){
+        this.eatButton.onmousedown = (ev) => {}
+        this.createButton.onmousedown = (ev) => {}
+    }
+
     add(addAmount){
         this.amount += addAmount;
         this.updateCard();
@@ -100,7 +105,10 @@ export default class Resource {
     updateCard(){
         //let amtText = document.getElementById(""+this.name + "-amt");
         this.amtText.innerHTML = this.amount + " " + this.unitName;
-        //TODO: Update button state
+        if(!this.costs){
+            let ticksPerSec = 1000 / TICK_SPEED;
+            this.buttonsDiv.innerHTML = (this.passiveAmt * ticksPerSec) + "/sec.";
+        }
     }
 
     createCard(){
@@ -168,6 +176,7 @@ export default class Resource {
         //Create div for create button or passive rate display
         const buttonsDiv = document.createElement('div');
         buttonsDiv.id = this.name + "-buttons";
+        this.buttonsDiv = buttonsDiv;
 
         let costString = "";
         if(!this.costs){
