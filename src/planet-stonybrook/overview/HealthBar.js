@@ -46,7 +46,7 @@ export default class HealthBar {
 
     /* Changing Food amt  */ 
     setHealth() {
-        this.available_food.innerHTML = "Food Amt:" + (this.food * 1);
+        this.available_food.innerHTML = "Avail. Food: " + (this.food * 1);
     }
 
     incrementFood(amt) {

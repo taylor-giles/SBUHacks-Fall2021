@@ -13,7 +13,6 @@ export class App {
         /* Create instances */
         this.controller = new AppController();
         this.model = new AppModel();
-        this.healthBar = new HealthBar();
 
         /* Setup the components */
         this.controller.initController(this.model);
