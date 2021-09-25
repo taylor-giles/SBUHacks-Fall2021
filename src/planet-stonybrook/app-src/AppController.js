@@ -5,6 +5,9 @@
 export default class AppController {
     constructor () {
         this.tab_names = ["industry", "agriculture", "structures", "robots", "overview"];
+    
+        this.modal = document.getElementById("event-modal");
+        this.span = document.getElementsByClassName("close")[0];
     }
 
     initController(appModel) {
@@ -14,7 +17,6 @@ export default class AppController {
 
     initHandlers() {
         this.initTabs();
-        this.initModal();
     }
 
     /* Initiate the Tab clicking ability */
@@ -27,21 +29,10 @@ export default class AppController {
                 /* Update the list currently viewed */
                 this.appModel.loadTab(tab_name);
             }
-            
-        }
-    }
 
-    initModal(){
-        this.eventModal = document.getElementById("event-modal");
-        this.modalClose = document.getElementsByClassName("close")[0];
-        this.modalClose.onclick = function(){
-            this.eventModal.style.display = "none";
-        }
-        window.onclick = function(event) {
-            if (event.target == eventModal) {
-              eventModal.style.display = "none";
+            button.ondblclick = (event) => {
+                this.appModel.loadTab("modal");
             }
         }
-        this.eventModal.style.display = "block";
     }
 }
