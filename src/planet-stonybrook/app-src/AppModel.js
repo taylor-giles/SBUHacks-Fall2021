@@ -92,7 +92,7 @@ export default class AppModel {
         // Fromat: img, title, descText, hook, buttonName, model
         //const yuck = new Modal("../../../images/Bread Card.png","TITLE", "HELLO", null, "Exit", this);
         
-        const yuck = new Modal(img, title, desc, hook, btnName, this);
+        const yuck = new Modal(img, title, desc, hook, btnName, this, null);
         const blah = yuck.createModal();
 
         modal.appendChild(blah);
@@ -108,7 +108,7 @@ export default class AppModel {
         // Fromat: img, title, descText, hook, buttonName, model
         //const yuck = new Modal("../../../images/Bread Card.png","TITLE", "HELLO", null, "Exit", this);
         
-        const yuck = new Modal(img, title, desc, null, "Exit", this);
+        const yuck = new Modal(img, title, desc, null, "Exit", this, "102px");
         const blah = yuck.createModal();
 
         modal.appendChild(blah);

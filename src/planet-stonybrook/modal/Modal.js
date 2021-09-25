@@ -1,5 +1,5 @@
 export default class Modal {
-    constructor(img, title, descText, hook, buttonName, model) {
+    constructor(img, title, descText, hook, buttonName, model, imgSize) {
         this.count = 1;
         this.src = img;
         this.title = title;
@@ -8,6 +8,7 @@ export default class Modal {
         this.buttonName = buttonName;
 
         this.model = model;
+        this.imgSize = imgSize;
 
         this.modal = null;
     }
@@ -31,6 +32,10 @@ export default class Modal {
         const img = document.createElement('img');
         img.src = this.src;
         img.id = "mod-" + this.count + "-img";
+        if(!this.imgSize) {
+            img.width = this.imgSize;
+            img.height = this.imgSize;
+        }
 
         //Create and add description text
         const titleText = document.createElement('div');
