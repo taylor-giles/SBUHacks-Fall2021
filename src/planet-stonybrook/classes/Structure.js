@@ -1,5 +1,3 @@
-import {TICK_SPEED} from '../ResourceManager.js';
-
 
 export default class Structure {
     constructor(name, description, imgSrc, attemptCreation){
