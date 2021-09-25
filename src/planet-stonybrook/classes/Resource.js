@@ -1,3 +1,6 @@
+import { HEALTH_BAR } from "../resource-objects/OverviewObjects.js";
+
+
 export const TICK_SPEED = 50;
 
 /**
@@ -17,7 +20,7 @@ export const TICK_SPEED = 50;
  *      costs: Boolean - true if this resource is gained passively, false otherwise
  */
 export default class Resource {
-    constructor(name, description, imgSrc, unitName, category, passiveAmt, isEdible, costs, requiredStructures){
+    constructor(name, description, imgSrc, unitName, category, passiveAmt, foodAmt, costs, requiredStructures){
         /* From parameters */
         this.name = name;
         this.description = description;
@@ -27,7 +30,7 @@ export default class Resource {
         this.costs = costs;
         this.requiredStructures = requiredStructures;
         this.passiveAmt = passiveAmt;
-        this.isEdible = isEdible;
+        this.foodAmt = foodAmt;
         
         //Initialize amount to 0
         this.amount = 0;
@@ -146,6 +149,8 @@ export default class Resource {
         //Create div for collection info/build button
         const buildDiv = document.createElement('div');
         buildDiv.id = this.name + "-build";
+        buildDiv.classList = 'build-container';
+        buildDiv.classList.add('vertical-arrangement');
 
         //Create div for cost display
         const costDiv = document.createElement('div');
@@ -153,20 +158,35 @@ export default class Resource {
         costDiv.classList = 'cost-text';
 
         //Create div for create button or passive rate display
-        const createDiv = document.createElement('div');
-        createDiv.id = this.name + "-create";
+        const buttonsDiv = document.createElement('div');
+        buttonsDiv.id = this.name + "-buttons";
 
         let costString = "";
         if(!this.costs){
             let ticksPerSec = 1000 / TICK_SPEED;
             costString = "Passive Collection<br />";
-            createDiv.innerHTML = (this.passiveAmt * ticksPerSec) + "/sec.";
+            buttonsDiv.innerHTML = (this.passiveAmt * ticksPerSec) + "/sec.";
         } else {
             //Update cost display
             costString = "Cost: ";
             for(let cost of this.costs){
                 costString += cost.amount + " " + cost.resource.unitName + " " + cost.resource.name;
                 costString += "<br />";
+            }
+
+            //If needed, create and add "eat" button
+            if(this.foodAmt > 0){
+                const eatButton = document.createElement('button');
+                eatButton.id = this.name + "-btn_eat";
+                eatButton.innerHTML = "Eat (+" + this.foodAmt + " HP)";
+                eatButton.classList = 'create-button';
+                eatButton.onmousedown = (ev) => {
+                    this.subtract(1);
+                    HEALTH_BAR.decrementFood(this.foodAmt);
+                    HEALTH_BAR.incrementHealth(this.foodAmt);
+                }
+                this.eatButton = eatButton;
+                buttonsDiv.appendChild(eatButton);
             }
 
             //Create and add "create" button
@@ -176,7 +196,7 @@ export default class Resource {
             createButton.classList = 'create-button';
             createButton.onmousedown = (ev) => {this.create();} 
             this.createButton = createButton;
-            createDiv.appendChild(createButton);
+            buttonsDiv.appendChild(createButton);
         }
         //Update cost display with structure requirements
         if(this.requiredStructures){
@@ -188,11 +208,8 @@ export default class Resource {
         }
         costDiv.innerHTML = costString.substring(0, costString.length - 6);
 
-
         buildDiv.appendChild(costDiv);
-        buildDiv.appendChild(createDiv);
-        buildDiv.classList = 'build-container';
-        buildDiv.classList.add('vertical-arrangement');
+        buildDiv.appendChild(buttonsDiv);
         card.appendChild(buildDiv);
 
         return card;

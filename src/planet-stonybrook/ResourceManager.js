@@ -1,18 +1,29 @@
 import * as OBJECTS from './resource-objects/GameplayObjects.js';
 import { TICK_SPEED } from './classes/Resource.js';
+import { gameWon } from './overview/FinishGame.js';
+import { EVENT_CHANCE } from './classes/Event.js';
+import { HEALTH_BAR } from './resource-objects/OverviewObjects.js';
 
 /**
  * This class handles all of the interactions between resources.
  * Runner of all passive resource gains.
  */
-
+const PASSIVE_HEALTH_LOSS = 1; //The amount of health lost per tick
 export const ALL_RESOURCES = OBJECTS.ALL_INDUSTRY_RESOURCES.concat(OBJECTS.ALL_AGRICULTURE_RESOURCES);
+export const calculateAvailableFood = function(){
+    let totalFood = 0;
+    for(const resource of ALL_RESOURCES){
+        totalFood += resource.amount * resource.foodAmt;
+    }
+    return totalFood;
+}
 export default class ResourceManager {
-    constructor(appController){
+    constructor(appController, healthBar){
         setInterval(this.runTick, TICK_SPEED);
         this.activeEvent = null;
         this.activeEventTimer = 0;
         this.controller = appController;
+        this.healthBar = healthBar;
     }
 
     /**
@@ -29,9 +40,10 @@ export default class ResourceManager {
                 this.activeEventTimer = 0;
             }
         } else {
-            //TODO: Random chance for event
+            if(Math.random() > EVENT_CHANCE){
+                //TODO: Pick and activate a random event
+            }
         }
-
 
         //Check for passive resources
         for(const resource of ALL_RESOURCES){
@@ -43,25 +55,48 @@ export default class ResourceManager {
 
         // Check Thresholds to potentially update buttons
         for(const resource of ALL_RESOURCES) {
-            let num_reached = 0;
-            if(resource.costs) {
-                for(const cost of resource.costs) {
-                    if(cost) {
-                        if(cost.resource.amount >= cost.amount) {
-                            num_reached += 1;
-                        }
-                    }
-                }
-                let btn = resource.createButton;
-                if(num_reached == resource.costs.length) {
-                    btn.classList.add("button-active");
-                    btn.classList.remove("button-disabled");
-                }
-                else {
-                    btn.classList.remove("button-active");
-                    btn.classList.add("button-disabled");
+            if(resource.createButton){
+                if(resource.canAfford()){
+                    resource.createButton.classList.add("button-active");
+                    resource.createButton.classList.remove("button-disabled");
+                } else {
+                    resource.createButton.classList.remove("button-active");
+                    resource.createButton.classList.add("button-disabled");
                 }
             }
+            if(resource.eatButton){
+                if(resource.amount > 0){
+                    resource.eatButton.classList.add("button-active");
+                    resource.eatButton.classList.remove("button-disabled");
+                } else {
+                    resource.eatButton.classList.remove("button-active");
+                    resource.eatButton.classList.add("button-disabled");
+                }
+            }
+        }
+
+        for(const structure of OBJECTS.ALL_STRUCTURES){
+            if(structure.createButton){
+                if(structure.canAfford()){
+                    structure.createButton.classList.add("button-active");
+                    structure.createButton.classList.remove("button-disabled");
+                } else {
+                    structure.createButton.classList.remove("button-active");
+                    structure.createButton.classList.add("button-disabled");
+                }
+            }
+        }
+
+        //Decrement health
+        HEALTH_BAR.decrementHealth(PASSIVE_HEALTH_LOSS);
+
+        //Update available food
+        HEALTH_BAR.food = calculateAvailableFood();
+        HEALTH_BAR.setHealth();
+
+        //Win!
+        if(OBJECTS.ROCKET.amount > 0){
+            gameWon();
         }
     }
 }

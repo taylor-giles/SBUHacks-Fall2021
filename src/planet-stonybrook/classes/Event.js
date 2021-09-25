@@ -1,3 +1,5 @@
+
+export const EVENT_CHANCE = 0.01;
 export default class Event {
     constructor(name, description, imgSrc, duration, doEvent, finishEvent){
         this.name = name;
