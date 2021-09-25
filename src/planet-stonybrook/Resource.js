@@ -2,20 +2,37 @@
 /**
  * Resource.js
  * 
- * This class handles all information pertaining to 
+ * This class handles all information pertaining to in-game resources.
+ * Properties:
+ *      name
+ *      description
+ *      amount
+ *      imgSrc
+ *      card
  */
 export default class Resource {
     constructor(name, description, imgSrc){
         //Initialize amount to 0
         this.amount = 0;
+        this.card = createCard();
     }
 
     add(addAmount){
         this.amount += addAmount;
+        updateCard();
     }
 
     subtract(subAmount){
         this.amount -= subAmount;
+        updateCard();
+    }
+
+    /**
+     * Refresh/update the content of the card for this resource
+     */
+    updateCard(){
+        let amtText = document.getElementById(this.name + "-amt");
+        amtText.innerHTML = this.amount;
     }
 
     createCard(){
