@@ -1,5 +1,5 @@
-import * as INDUSTRY from './IndustryResources';
-import * as AGRICULTURE from './AgricultureResources'
+import * as INDUSTRY from './IndustryResources.js';
+import * as AGRICULTURE from './AgricultureResources.js'
 
 /**
  * This class handles all of the interactions between resources.

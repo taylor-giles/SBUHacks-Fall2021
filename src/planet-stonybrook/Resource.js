@@ -18,19 +18,19 @@ export default class Resource {
     constructor(name, description, imgSrc, category, isPassive, addFunc){
         //Initialize amount to 0
         this.amount = 0;
-        this.card = createCard();
+        this.card = this.createCard();
         this.passiveAmt = 0;
     }
 
     add(addAmount){
         this.amount += addAmount;
-        updateCard();
+        this.updateCard();
     }
 
     subtract(subAmount){
         if(this.amount >= subAmount){
             this.amount -= subAmount;
-            updateCard();
+            this.updateCard();
             return true;
         }
         return false;
