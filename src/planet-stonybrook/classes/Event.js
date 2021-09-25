@@ -12,6 +12,6 @@ export default class Event {
 
     createModal(){
         // Format: img, title, descText, hook, buttonName, model
-        this.model.createEventModal(this.imgSrc, this.name, this.description);
+        this.model.createEventModal(this.imgSrc, this.name, this.description, "100px");
     }
 }
