@@ -85,6 +85,10 @@ export default class AppModel {
         /* TODO: */
     }
 
+    createIntroModal() {
+        
+    }
+
     createModal() {
         const modal = document.createElement('div');
         modal.id = "modal-tab";
@@ -96,6 +100,14 @@ export default class AppModel {
         modal.appendChild(blah);
 
         this.tabs["modal"] = modal;
+    }
+
+    createIntro() {
+        const part1 = '../../../images/Intro part 1.png';
+        const part2 = '../../../images/Intro part 2.png';
+        const part3 = '../../../images/Intro part 3.png';
+    
+        
     }
 
     createTabs() {
