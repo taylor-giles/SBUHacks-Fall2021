@@ -53,6 +53,14 @@ export default class Resource {
         return false;
     }
 
+    //If the depleteAmount cannot be subtracted from this resource, set this resource amount to 0
+    deplete(depleteAmount){
+        if(!this.subtract(depleteAmount)){
+            this.amount = 0;
+        }
+        this.updateCard();
+    }
+
     canAfford(){
         if(this.costs){
             for(let cost of this.costs){
