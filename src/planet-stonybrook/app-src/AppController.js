@@ -26,10 +26,6 @@ export default class AppController {
                 /* Update the list currently viewed */
                 this.appModel.loadTab(tab_name);
             }
-
-            button.ondblclick = (event) => {
-                this.appModel.loadTab("modal");
-            }
         }
     }
 }
