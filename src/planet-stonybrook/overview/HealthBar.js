@@ -1,19 +1,28 @@
 import { gameLost } from "./FinishGame.js";
 
 const startingHealth = 100;
+const startingFood = 100;
 
 export default class HealthBar {
     constructor () {
         this.health = startingHealth;  // Equals width of the status bar
+        this.food = startingFood;
 
         this.health_status_bar = document.getElementById("health-status-bar");
         this.health_bar = document.getElementById("health-bar");
         this.health_bar_progress = document.getElementById("health-bar-progress");
+    
+        this.available_food = document.getElementById("available-food"); 
+    
+        this.setProgressWidth();
+        this.setHealth();
     }
+    
+    /* Setting health amount */
 
-    setWidth() {
+    setProgressWidth() {
         this.health_bar_progress.style.width = this.health + '%';
-        this.health_bar_progress.innerHTML = this.health * 1 + '%';
+        this.health_bar_progress.innerHTML = "Health: " + (this.health * 1) + '%';
     }
 
     incrementHealth(amt) {
@@ -21,7 +30,7 @@ export default class HealthBar {
         if(this.health >= startingHealth)
             this.health = startingHealth;
 
-        this.setWidth();
+        this.setProgressWidth();
     }
     
     decrementHealth(amt) {
@@ -29,10 +38,30 @@ export default class HealthBar {
         if(this.health <= 0)
             this.health = 0;
 
-        this.setWidth();
+        this.setProgressWidth();
 
         if(this.health === 0)
             gameLost();
+    }
+
+    /* Changing Food amt  */ 
+    setHealth() {
+        this.available_food.innerHTML = "Food Amt:" + (this.food * 1);
+    }
+
+    incrementFood(amt) {
+        this.food += amt;
+        this.setHealth(); 
+    }
+
+    decrementFood(amt) {
+        this.food -= amt;
+
+        if(this.food < 0) {
+            this.food = 0;
+        }
+
+        this.setHealth();
     }
 
 

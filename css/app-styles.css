@@ -78,6 +78,8 @@
   border-color: black;
   border-width: 2px;
   border-style: solid;
+  display: flex;
+  flex-direction: row;
 }
 
 #health-bar {
@@ -98,12 +100,34 @@
   border-radius: 10px;
   border-color: black;
   border-width: 2px;
-  font-size: 12pt;
+  font-size: 18pt;
   color: black;
-  width: 100%;
+  width: 50%;
   height: 100%;
   background-color: var(--swatch-complement);
+  /* Center Text veritically */
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
 }
 
 #available-food {
+  position: relative;
+  width: 25%;
+  left: 22%;
+  border-radius: 10px;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  background-color: var(--swatch-status-bar-background);
+  height: 75%;
+  top: 10%;
+  color: white;
+  font-size: 18pt;
+  /* Center Text veritically */
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
 }
