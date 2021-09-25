@@ -14,6 +14,7 @@ export default class AppController {
 
     initHandlers() {
         this.initTabs();
+        this.initModal();
     }
 
     /* Initiate the Tab clicking ability */
@@ -28,5 +29,19 @@ export default class AppController {
             }
             
         }
+    }
+
+    initModal(){
+        this.eventModal = document.getElementById("event-modal");
+        this.modalClose = document.getElementsByClassName("close")[0];
+        this.modalClose.onclick = function(){
+            this.eventModal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == eventModal) {
+              eventModal.style.display = "none";
+            }
+        }
+        this.eventModal.style.display = "block";
     }
 }
