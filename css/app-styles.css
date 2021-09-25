@@ -1,5 +1,11 @@
 @import "./colors.css";
 
+body {
+  background-color: var(--swatch-foundation);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 #root {
   background-color: var(--swatch-foundation);
   font-family: "Lexend Exa";
