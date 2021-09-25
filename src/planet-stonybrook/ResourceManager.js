@@ -8,7 +8,7 @@ import { HEALTH_BAR } from './resource-objects/OverviewObjects.js';
  * This class handles all of the interactions between resources.
  * Runner of all passive resource gains.
  */
-const PASSIVE_HEALTH_LOSS = 0.25; //The amount of health lost per tick
+const PASSIVE_HEALTH_LOSS = 0.01; //The amount of health lost per tick
 var activeEventTimer = 0;
 var activeEvent = null;
 export const ALL_RESOURCES = OBJECTS.ALL_INDUSTRY_RESOURCES.concat(OBJECTS.ALL_AGRICULTURE_RESOURCES);
@@ -20,7 +20,7 @@ export const calculateAvailableFood = function(){
     return totalFood;
 }
 export default class ResourceManager {
-    constructor(appModel, healthBar){
+    constructor(appModel){
         //Set the model for the events
         for(let event in OBJECTS.ALL_EVENTS){
             OBJECTS.ALL_EVENTS[event].model = appModel;
@@ -28,8 +28,6 @@ export default class ResourceManager {
 
         //Run runTick() every tick
         setInterval(this.runTick, TICK_SPEED);
-        this.controller = appModel;
-        this.healthBar = healthBar;
     }
 
     /**

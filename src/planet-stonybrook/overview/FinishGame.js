@@ -1,11 +1,18 @@
-import ResourceManager from "../ResourceManager.js";
+import ResourceManager, { ALL_RESOURCES } from "../ResourceManager.js";
+
+function finish(){
+    ResourceManager.stopTime = true;
+    for(let resource of ALL_RESOURCES){
+        resource.disableButtons();
+    }
+}
 
 export function gameLost() {
-    ResourceManager.stopTime = true;
+    finish();
     console.log("Game Lost");
 }
 
 export function gameWon() {
-    ResourceManager.stopTime = true;
+    finish();
     console.log("Game Won");
 }

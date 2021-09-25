@@ -22,7 +22,7 @@ export default class HealthBar {
 
     setProgressWidth() {
         this.health_bar_progress.style.width = this.health + '%';
-        this.health_bar_progress.innerHTML = "Health: " + (this.health * 1) + '%';
+        this.health_bar_progress.innerHTML = "Health: " + Math.floor(this.health * 1) + '%';
     }
 
     incrementHealth(amt) {
