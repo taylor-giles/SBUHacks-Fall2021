@@ -1,4 +1,5 @@
 import * as OBJECTS from '../resource-objects/GameplayObjects.js';
+import Modal from '../modal/Modal.js'
 
 export default class AppModel {
     constructor () {
@@ -8,6 +9,10 @@ export default class AppModel {
         this.tabs = [];
 
         this.currentTab = null;
+    }
+
+    loadDefault() {
+        this.loadTab("industry");
     }
 
     loadTab(tab_name) {
@@ -80,11 +85,25 @@ export default class AppModel {
         /* TODO: */
     }
 
+    createModal() {
+        const modal = document.createElement('div');
+        modal.id = "modal-tab";
+
+        // Fromat: img, title, descText, hook, buttonName, model
+        const yuck = new Modal("../../../images/Bread Card.png","TITLE", "HELLO", null, "Exit", this);
+        const blah = yuck.createModal();
+
+        modal.appendChild(blah);
+
+        this.tabs["modal"] = modal;
+    }
+
     createTabs() {
         this.createIndustry();
         this.createAgriculture();
         this.createStructures();
         this.createStructures();
         this.createOverview();
+        this.createModal();
     }
 }

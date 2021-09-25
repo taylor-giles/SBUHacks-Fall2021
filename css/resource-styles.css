@@ -30,6 +30,12 @@
   justify-content: center;
 }
 
+.centered-arrangement {
+  display: flex;
+  justify-content: center;
+  padding-top: 5%;
+}
+
 .create-button {
   padding: 15px 25px;
   border-radius: 10px;
@@ -54,6 +60,10 @@
 
 .description-text {
   font-size: 12pt;
+}
+
+.title-text {
+  font-size: 32pt;
 }
 
 .name-text {
