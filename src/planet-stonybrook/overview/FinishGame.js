@@ -57,12 +57,12 @@ function createExitModal(src, title, num) {
 
 export function gameLost() {
     //finish();
-    createExitModal('../../../images/New/Lose Screen.png', "YOU LOSE :(", 1);
+    createExitModal('../../../Images/New/Lose Screen.png', "YOU LOSE :(", 1);
     console.log("Game Lost");
 }
 
 export function gameWon() {
     //finish();
-    createExitModal('../../../images/New/Win Screen.png', "YOU WIN!", 2);
+    createExitModal('../../../Images/New/Win Screen.png', "YOU WIN!", 2);
     console.log("Game Won");
 }

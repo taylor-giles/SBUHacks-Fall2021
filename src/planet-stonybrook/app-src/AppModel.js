@@ -80,7 +80,7 @@ export default class AppModel {
         const cards = document.createElement('div');
         cards.id = "robots-tab-container";
 
-        const yuck = new Modal('../../../images/New/WIP.png', "Work in progress...", "We were very very ambitious", null, "Exit", this, null);
+        const yuck = new Modal('../../../Images/New/WIP.png', "Work in progress...", "We were very very ambitious", null, "Exit", this, null);
         const blah = yuck.createModal();
 
         this.tabs["robots"] = blah;
@@ -91,7 +91,7 @@ export default class AppModel {
         const cards = document.createElement('div');
         cards.id = "overview-tab-container";
 
-        const yuck = new Modal('../../../images/New/WIP.png', "Work in progress...", "We were very very ambitious", null, "Exit", this, null);
+        const yuck = new Modal('../../../Images/New/WIP.png', "Work in progress...", "We were very very ambitious", null, "Exit", this, null);
         const blah = yuck.createModal();
         
         this.tabs["overview"] = blah;

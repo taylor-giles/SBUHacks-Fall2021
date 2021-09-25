@@ -14,7 +14,7 @@ const METAL_COSTS = [new Cost(ROCKS, 5)];
 export const METAL = new Resource("Metal", "Refined metal used for creating structures", "../../../Images/New/Metal Card.png", "kg", INDUSTRY_NAME, 0, 0, METAL_COSTS, null);
 
 //WATER
-export const WATER = new Resource("Water", "The planet's water harvester automatically collects water to grow corn, wheat, or make bread", "../../images/New/Water Card.png", "L", AGRICULTURE_NAME, 1, 0, null, null);
+export const WATER = new Resource("Water", "The planet's water harvester automatically collects water to grow corn, wheat, or make bread", "../../../Images/New/Water Card.png", "L", AGRICULTURE_NAME, 1, 0, null, null);
 
 //MILL
 const MILL_COSTS = [new Cost(WATER, 15), new Cost(METAL, 20)];

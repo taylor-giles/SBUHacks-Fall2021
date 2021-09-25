@@ -1,9 +1,9 @@
 import AppModel from "../app-src/AppModel.js";
 import { App } from "../app-src/app.js";
 
-export const part1 = '../../../images/Intro part 1.png';
-export const part2 = '../../../images/Intro part 2.png';
-export const part3 = '../../../images/Intro part 3.png';
+export const part1 = '../../../Images/Intro part 1.png';
+export const part2 = '../../../Images/Intro part 2.png';
+export const part3 = '../../../Images/Intro part 3.png';
 
 export default class Intro {
     constructor(model, app) {
