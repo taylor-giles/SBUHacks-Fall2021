@@ -1,4 +1,5 @@
 import Resource from './Resource.js'
+import * as INDUSTRY_RESOURCES from './IndustryResources.js'
 //import ResourceManager from './ResourceManager'
 
 /*
@@ -21,8 +22,7 @@ export class App {
         /* Test creating the resource instance */
         let workspace = document.getElementById("workspace-edit");
 
-        workspace.appendChild();
-
+        workspace.appendChild(INDUSTRY_RESOURCES.ROCKS.card);
     }
 
 }
