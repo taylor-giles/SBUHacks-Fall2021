@@ -4,17 +4,22 @@
  * 
  * This class handles all information pertaining to in-game resources.
  * Properties:
- *      name
- *      description
- *      amount
- *      imgSrc
- *      card
+ *      name: String - The name of the resource
+ *      description: String - A description for the resource
+ *      amount: Int - The quantity of this resource that the player currently holds
+ *      imgSrc: String - The path to the source for this image
+ *      card: Document element - The div card for this resource
+ *      addFunc: Function - A callback function which is called when this resource's count is increased
+ *      category: String - The name of the category that this resource belongs to
+ *      passiveAmt: Number - The quantity of this resource that is passively accumulated every tick
+ *      isPassive: Boolean - true if this resource is gained passively, false otherwise
  */
 export default class Resource {
-    constructor(name, description, imgSrc){
+    constructor(name, description, imgSrc, category, isPassive, addFunc){
         //Initialize amount to 0
         this.amount = 0;
         this.card = createCard();
+        this.passiveAmt = 0;
     }
 
     add(addAmount){
@@ -23,8 +28,12 @@ export default class Resource {
     }
 
     subtract(subAmount){
-        this.amount -= subAmount;
-        updateCard();
+        if(this.amount >= subAmount){
+            this.amount -= subAmount;
+            updateCard();
+            return true;
+        }
+        return false;
     }
 
     /**
