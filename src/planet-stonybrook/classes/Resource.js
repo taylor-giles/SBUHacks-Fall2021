@@ -20,7 +20,7 @@ export const TICK_SPEED = 1000;
  *      costs: Boolean - true if this resource is gained passively, false otherwise
  */
 export default class Resource {
-    constructor(name, description, imgSrc, unitName, category, costs, requiredStructures){
+    constructor(name, description, imgSrc, unitName, category, passiveAmt, costs, requiredStructures){
         /* From parameters */
         this.name = name;
         this.description = description;
@@ -29,10 +29,10 @@ export default class Resource {
         this.category = category;
         this.costs = costs;
         this.requiredStructures = requiredStructures;
+        this.passiveAmt = passiveAmt;
         
         //Initialize amount to 0
         this.amount = 0;
-        this.passiveAmt = 0;
 
         /* Create the card */
         this.card = this.createCard();
@@ -59,19 +59,29 @@ export default class Resource {
                     return false;
                 }
             }
+
+            if(this.requiredStructures){
+                for(let structure of this.requiredStructures){
+                    if(!structure.isCreated){
+                        return false;
+                    }
+                }
+            }
             return true;
         } else {
             return true;
         }
     }
 
-    create(){ 
+    create(amount=1){ 
         console.log("Creating " + this.name);
         if(this.canAfford()){
-            for(let cost of this.costs){
-                cost.resource.subtract(cost.amount);
+            if(this.costs){
+                for(let cost of this.costs){
+                    cost.resource.subtract(cost.amount);
+                }
             }
-            this.add(1);
+            this.add(amount);
         } else {
             //TODO: Say "you cant afford this"
         }
@@ -81,8 +91,8 @@ export default class Resource {
      * Refresh/update the content of the card for this resource
      */
     updateCard(){
-        let amtText = document.getElementById(this.name + "-amt");
-        amtText.innerHTML = this.amount + " " + this.unitName;
+        //let amtText = document.getElementById(""+this.name + "-amt");
+        this.amtText.innerHTML = this.amount + " " + this.unitName;
     }
 
     createCard(){
@@ -133,6 +143,7 @@ export default class Resource {
         amtText.id = this.name + "-amt";
         amtText.innerHTML = this.amount + " " + this.unitName;
         amtText.classList = 'amount-text';
+        this.amtText = amtText;
         card.appendChild(amtText);
 
         //Create div for collection info/build button
