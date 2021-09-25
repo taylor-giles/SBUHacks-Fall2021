@@ -32,7 +32,7 @@ export default class Modal {
         const img = document.createElement('img');
         img.src = this.src;
         img.id = "mod-" + this.count + "-img";
-        if(!this.imgSize) {
+        if(this.imgSize) {
             img.style.width = this.imgSize;
             img.style.height = this.imgSize;
         }
