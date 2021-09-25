@@ -1,6 +1,4 @@
-import * as INDUSTRY from './resource-objects/IndustryResources.js';
-import * as AGRICULTURE from './resource-objects/AgricultureResources.js'
-import * as STRUCTURES from './resource-objects/Structures.js';
+import * as OBJECTS from './resource-objects/GameplayObjects';
 import { TICK_SPEED } from './classes/Resource.js';
 
 /**
@@ -8,26 +6,13 @@ import { TICK_SPEED } from './classes/Resource.js';
  * Runner of all passive resource gains.
  */
 
-export const ALL_RESOURCES = INDUSTRY.ALL_INDUSTRY_RESOURCES.concat(AGRICULTURE.ALL_AGRICULTURE_RESOURCES);
+export const ALL_RESOURCES = OBJECTS.ALL_INDUSTRY_RESOURCES.concat(OBJECTS.ALL_AGRICULTURE_RESOURCES);
 export default class ResourceManager {
     constructor(appController){
         setInterval(runTick, TICK_SPEED);
         this.activeEvent = null;
         this.activeEventTimer = 0;
         this.controller = appController;
-    }
-
-    initStructureCosts(){
-        const MILL_COSTS = [new Cost(AGRICULTURE_RESOURCES.WATER, 15), new Cost(INDUSTRY_RESOURCES.METAL, 20)];
-        const REFINERY_COSTS = [new Cost(INDUSTRY_RESOURCES.METAL, 30)];
-        const DRILL_COSTS = [new Cost(INDUSTRY_RESOURCES.METAL, 30)];
-        STRUCTURES.MILL.costs = MILL_COSTS;
-        STRUCTURES.REFINERY.costs = REFINERY_COSTS;
-        STRUCTURES.DRILL.costs = DRILL_COSTS;
-
-        for(let structure of STRUCTURES.ALL_STRUCTURES){
-            structure.createCard();
-        }
     }
 
     /**
