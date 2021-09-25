@@ -48,9 +48,6 @@ export default class Modal {
         descText.id = "mod-" + this.count + "-desc";
         descText.innerHTML = this.descText;
         descText.classList.add('description-text');
-
-        const but = document.createElement('button');
-        descText.id = "mod-" + this.count + "-button";
         
         const createButton = document.createElement('button');
         createButton.id = this.name + "-btn_create";

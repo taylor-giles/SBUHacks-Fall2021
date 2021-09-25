@@ -14,13 +14,9 @@ export class App {
         this.model = new AppModel();
         this.controller = new AppController();
 
-        this.intro = new Intro(this.model);
+        this.intro = new Intro(this.model, this);
         this.intro.createIntro();
 
-        /* Setup the components */
-        this.controller.initController(this.model);
-
-        this.resourceManager = new ResourceManager(this.model);
     }
 
     /**
@@ -28,6 +24,11 @@ export class App {
      * 
      */
     launch() {
+        /* Setup the components */
+        this.controller.initController(this.model);
+
+        this.resourceManager = new ResourceManager(this.model);
+        
         console.log("Starting up the app");
 
         /* Setup all the tabs */
@@ -49,5 +50,5 @@ export class App {
  */
 window.onload = function() {
     let app = new App();
-    app.launch();
+    //app.launch();
 }
