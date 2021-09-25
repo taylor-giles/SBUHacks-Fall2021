@@ -2,7 +2,7 @@ import Resource from "./Resource.js";
 
 const AGRICULTURE_NAME = "Agriculture";
 
-export const WATER = new Resource("Water", "", "Images\\Water Card.png", AGRICULTURE_NAME, true, function(){
+export const WATER = new Resource("Water", "", "../../images/Water Card.png", AGRICULTURE_NAME, true, function(){
     WATER.add(1);
 });
 

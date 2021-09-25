@@ -16,10 +16,20 @@
  */
 export default class Resource {
     constructor(name, description, imgSrc, category, isPassive, addFunc){
+        /* From parameters */
+        this.name = name;
+        this.description = description;
+        this.imgSrc = imgSrc;
+        this.category = category;
+        this.isPassive = isPassive;
+        this.addFunc = addFunc;
+        
         //Initialize amount to 0
         this.amount = 0;
-        this.card = this.createCard();
         this.passiveAmt = 0;
+
+        /* Create the card */
+        this.card = this.createCard();
     }
 
     add(addAmount){
@@ -47,20 +57,20 @@ export default class Resource {
     createCard(){
         // Create card element as a horizontal layout div
         const card = document.createElement('div');
-        card.setAttribute('horizontal', '');  
-        card.setAttribute('layout', '');
-        card.classList = 'resource-card';
+        card.classList = '';
+        card.classList.add('resource-card');
+        card.classList.add('horizontal-arrangement');
 
         //Create image
-        const img = document.createElement('img')
-        img.src = this.imgSrc
-        img.id = this.name + "-img"
-        card.appendChild(img)
+        const img = document.createElement('img');
+        img.src = this.imgSrc;
+        img.id = this.name + "-img";
+        card.appendChild(img);
 
         //Create vertical container to store name and description
         const nameContainer = document.createElement('div');
-        nameContainer.setAttribute('vertical', '');
-        nameContainer.setAttribute('layout', '');
+        nameContainer.classList = '';
+        nameContainer.classList.add('vertical-arrangement');
 
         //Create and add name text
         const nameText = document.createElement('div');
@@ -71,16 +81,15 @@ export default class Resource {
         //Create and add description text
         const descText = document.createElement('div');
         descText.id = this.name + "-desc";
-        descText.innerHTML = this.desc;
+        descText.innerHTML = this.description;
         nameContainer.appendChild(descText);
 
         //Add name and description div
         card.appendChild(nameContainer);
 
         //Create and add div for amount
-        const amtText = document.createElement('div');
+        const amtText = document.createTextNode(this.amount);
         amtText.id = this.name + "-amt";
-        amtText.innerHTML = this.amount;
         card.appendChild(amtText);
 
         //Create and add div for collection info/build button
