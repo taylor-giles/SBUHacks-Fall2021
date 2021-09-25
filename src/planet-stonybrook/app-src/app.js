@@ -1,5 +1,6 @@
-import Resource from './Resource.js'
-import * as INDUSTRY_RESOURCES from './IndustryResources.js'
+import Resource from '../classes/Resource.js'
+import Structure from '../classes/Structure.js'
+import * as INDUSTRY_RESOURCES from '../resource-objects/IndustryResources.js'
 //import ResourceManager from './ResourceManager'
 
 /*
@@ -25,6 +26,7 @@ export class App {
         workspace.appendChild(INDUSTRY_RESOURCES.ROCKS.card);
         workspace.appendChild(INDUSTRY_RESOURCES.METAL.card);
         workspace.appendChild(INDUSTRY_RESOURCES.ROCKET.card);
+        
     }
 
 }

@@ -1,4 +1,4 @@
-import Resource from "./Resource.js";
+import Resource from "../classes/Resource.js";
 
 const AGRICULTURE_NAME = "Agriculture";
 
@@ -6,7 +6,7 @@ export const WATER = new Resource("Water", "", "../../images/Water Card.png", AG
     WATER.add(1);
 });
 
-export const CORN = new Resource("Corn", "", "Images\\Corn Card.png", AGRICULTURE_NAME, false, function(){
+export const CORN = new Resource("Corn", "", "../../../Images/Corn Card.png", AGRICULTURE_NAME, false, function(){
     if(WATER.subtract(2)){
         CORN.add(1);
     } else {
@@ -14,7 +14,7 @@ export const CORN = new Resource("Corn", "", "Images\\Corn Card.png", AGRICULTUR
     }
 });
 
-export const WHEAT = new Resource("Wheat", "", "Images\\Wheat Card.png", AGRICULTURE_NAME, false, function(){
+export const WHEAT = new Resource("Wheat", "", "../../../Images/Wheat Card.png", AGRICULTURE_NAME, false, function(){
     if(WATER.subtract(4)){
         WHEAT.add(1);
     } else {
@@ -22,10 +22,12 @@ export const WHEAT = new Resource("Wheat", "", "Images\\Wheat Card.png", AGRICUL
     }
 });
 
-export const BREAD = new Resource("Bread", "", "Images\\Bread Card.png", AGRICULTURE_NAME, false, function(){
+export const BREAD = new Resource("Bread", "", "../../../Images/Bread Card.png", AGRICULTURE_NAME, false, function(){
     if(OIL.subtract(5)){
         FUEL.add(1);
     } else {
         //TODO: Show error message
     }
 });
+
+export const ALL_AGRICULTURE_RESOURCES = [WATER, CORN, WHEAT, BREAD];
