@@ -20,7 +20,7 @@ export const TICK_SPEED = 1000;
  *      costs: Boolean - true if this resource is gained passively, false otherwise
  */
 export default class Resource {
-    constructor(name, description, imgSrc, unitName, category, costs){
+    constructor(name, description, imgSrc, unitName, category, costs, requiredStructures){
         /* From parameters */
         this.name = name;
         this.description = description;
@@ -28,6 +28,7 @@ export default class Resource {
         this.unitName = unitName;
         this.category = category;
         this.costs = costs;
+        this.requiredStructures = requiredStructures;
         
         //Initialize amount to 0
         this.amount = 0;
@@ -52,9 +53,9 @@ export default class Resource {
     }
 
     canAfford(){
-        if(costs){
-            for(let cost of costs){
-                if(cost["resource"].amount < cost["amount"]){
+        if(this.costs){
+            for(let cost of this.costs){
+                if(cost.resource.amount < cost.amount){
                     return false;
                 }
             }
@@ -64,12 +65,15 @@ export default class Resource {
         }
     }
 
-    create(){
+    create(){ 
+        console.log("Creating " + this.name);
         if(this.canAfford()){
-            for(let cost of costs){
-                cost["resource"].subtract(cost["amount"]);
+            for(let cost of this.costs){
+                cost.resource.subtract(cost.amount);
             }
             this.add(1);
+        } else {
+            //TODO: Say "you cant afford this"
         }
     }
 
@@ -144,32 +148,41 @@ export default class Resource {
         const createDiv = document.createElement('div');
         createDiv.id = this.name + "-create";
 
+        let costString = "";
         if(!this.costs){
             let ticksPerSec = 1000 / TICK_SPEED;
-            costDiv.innerHTML = "Passive Collection";
+            costString = "Passive Collection<br />";
             createDiv.innerHTML = (this.passiveAmt * ticksPerSec) + "/sec.";
         } else {
             //Update cost display
-            let costString = "Cost: ";
+            costString = "Cost: ";
             for(let cost of this.costs){
-                costString += cost["amount"] + " " + cost["resource"].name;
+                costString += cost.amount + " " + cost.resource.name;
                 costString += "<br />";
             }
-            costDiv.innerHTML = costString.substring(0, costString.length - 6);
 
             //Create and add "create" button
             const createButton = document.createElement('img');
             createButton.id = this.name + "-btn_create";
             createButton.src = "../../../Images/New/Create.png"
+            createButton.onmousedown = (ev) => {this.create();} 
             createDiv.appendChild(createButton);
         }
+        //Update cost display with structure requirements
+        if(this.requiredStructures){
+            costString += "Requires: ";
+            for(let structure of this.requiredStructures){
+                costString += structure.name;
+                costString += "<br />";
+            }
+        }
+        costDiv.innerHTML = costString.substring(0, costString.length - 6);
+
+
         buildDiv.appendChild(costDiv);
         buildDiv.appendChild(createDiv);
         buildDiv.classList = 'build-container';
         buildDiv.classList.add('vertical-arrangement');
-
-        //Create div for cost display
-        
         card.appendChild(buildDiv);
 
         return card;

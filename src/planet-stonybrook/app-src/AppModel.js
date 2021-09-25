@@ -1,5 +1,6 @@
 import * as INDUSTRY_RESOURCES from '../resource-objects/IndustryResources.js'
 import * as AGRICULTURE_RESOURCES from '../resource-objects/AgricultureResources.js'
+import * as STRUCTURES from '../resource-objects/Structures.js';
 
 export default class AppModel {
     constructor () {
@@ -59,6 +60,11 @@ export default class AppModel {
         const cards = document.createElement('div');
         cards.id = "structures-tab-container";
 
+        for(let structure of STRUCTURES.ALL_STRUCTURES) {
+            cards.appendChild(structure.card);
+        }
+    
+        this.tabs["structures"] = cards;
         /* TODO: */
     }
 
