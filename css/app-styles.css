@@ -1,10 +1,4 @@
-:root {
-  --swatch-foundation: #c5baaf;
-  --swatch-primary: #e1ce71;
-  --swatch-complement: #d9a56d;
-  --swatch-contrast: #424b54;
-  --bounceEasing: cubic-bezier(0.51, 0.92, 0.24, 1.15);
-}
+@import "./colors.css";
 
 #root {
   background-color: var(--swatch-primary);
@@ -21,11 +15,11 @@
   left: 0%;
   top: 0%;
   width: 100%;
-  height: 10%;
+  height: 5%;
   text-align: center;
   background-image: linear-gradient(to bottom, #b8b808, #636723);
   color: white;
-  font-size: 48pt;
+  font-size: 24pt;
   border-color: black;
   border-width: 2px;
   border-style: solid;
@@ -34,10 +28,10 @@
 
 #planet-workspace {
   position: absolute;
-  left: 30%;
-  top: 10%;
-  width: 70%;
-  height: 80%;
+  left: 0%;
+  top: 5%;
+  width: 100%;
+  height: 100%;
   background-color: var(--swatch-accent);
 }
 
