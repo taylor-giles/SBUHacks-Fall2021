@@ -8,7 +8,7 @@ export default class Structure {
         this.isCreated = false;
         this.card = this.createCard();
     }
-    
+
     canAfford(){
         if(this.costs){
             for(let cost of this.costs){
@@ -16,10 +16,8 @@ export default class Structure {
                     return false;
                 }
             }
-            return true;
-        } else {
-            return true;
         }
+        return true;
     }
 
     create(){ 
@@ -28,9 +26,23 @@ export default class Structure {
             for(let cost of this.costs){
                 cost.resource.subtract(cost.amount);
             }
-            this.add(1);
+            this.isCreated = true;
+            this.updateCard();
         } else {
             //TODO: Say "you cant afford this"
+        }
+    }
+
+    updateCard(){
+        if(this.isCreated){
+            this.costDiv.innerHTML = "Created!";
+        } else {
+            let costString = "Cost: ";
+            for(let cost of this.costs){
+                costString += cost.amount + " " + cost.resource.unitName + " " + cost.resource.name;
+                costString += "<br />";
+            }
+            this.costDiv.innerHTML = costString.substring(0, costString.length - 6);
         }
     }
 
@@ -85,6 +97,7 @@ export default class Structure {
         const costDiv = document.createElement('div');
         costDiv.id = this.name + "-cost";
         costDiv.classList = 'cost-text';
+        this.costDiv = costDiv;
 
         //Create div for create button
         const createDiv = document.createElement('div');
@@ -93,15 +106,18 @@ export default class Structure {
         //Update cost display
         let costString = "Cost: ";
         for(let cost of this.costs){
-            costString += cost.amount + " " + cost.resource.name;
+            costString += cost.amount + " " + cost.resource.unitName + " " + cost.resource.name;
             costString += "<br />";
         }
         costDiv.innerHTML = costString.substring(0, costString.length - 6);
 
         //Create and add "create" button
-        const createButton = document.createElement('img');
+        const createButton = document.createElement('button');
         createButton.id = this.name + "-btn_create";
-        createButton.src = "../../../Images/New/Create.png"
+        createButton.innerHTML = "Create";
+        createButton.classList = 'create-button';
+        createButton.onmousedown = (ev) => {this.create();}
+        this.createButton = createButton;
         createDiv.appendChild(createButton);
         
         buildDiv.appendChild(costDiv);
@@ -110,6 +126,8 @@ export default class Structure {
         buildDiv.classList.add('vertical-arrangement');
         
         card.appendChild(buildDiv);
+
+        this.updateCard();
 
         return card;
     }
