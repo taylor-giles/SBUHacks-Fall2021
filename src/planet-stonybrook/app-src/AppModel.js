@@ -1,6 +1,4 @@
-import * as INDUSTRY_RESOURCES from '../resource-objects/IndustryResources.js'
-import * as AGRICULTURE_RESOURCES from '../resource-objects/AgricultureResources.js'
-import * as STRUCTURES from '../resource-objects/Structures.js';
+import * as OBJECTS from '../resource-objects/GameplayObjects.js';
 
 export default class AppModel {
     constructor () {
@@ -38,7 +36,7 @@ export default class AppModel {
         const cards = document.createElement('div');
         cards.id = "industry-tab-container";
 
-        for(let industry_resource of INDUSTRY_RESOURCES.ALL_INDUSTRY_RESOURCES) {
+        for(let industry_resource of OBJECTS.ALL_INDUSTRY_RESOURCES) {
             cards.appendChild(industry_resource.card);
         }
     
@@ -49,7 +47,7 @@ export default class AppModel {
         const cards = document.createElement('div');
         cards.id = "agriculture-tab-container";
 
-        for(let agriculture_resource of AGRICULTURE_RESOURCES.ALL_AGRICULTURE_RESOURCES) {
+        for(let agriculture_resource of OBJECTS.ALL_AGRICULTURE_RESOURCES) {
             cards.appendChild(agriculture_resource.card);
         }
     
@@ -60,7 +58,7 @@ export default class AppModel {
         const cards = document.createElement('div');
         cards.id = "structures-tab-container";
 
-        for(let structure of STRUCTURES.ALL_STRUCTURES) {
+        for(let structure of OBJECTS.ALL_STRUCTURES) {
             cards.appendChild(structure.card);
         }
     
