@@ -79,14 +79,22 @@ export default class AppModel {
     createRobots() {
         const cards = document.createElement('div');
         cards.id = "robots-tab-container";
-    
+
+        const yuck = new Modal('../../../images/New/WIP.png', "Work in progress...", "We were very very ambitious", null, "Exit", this, null);
+        const blah = yuck.createModal();
+
+        this.tabs["robots"] = blah;
         /* TODO: */
     }
 
     createOverview() {
         const cards = document.createElement('div');
         cards.id = "overview-tab-container";
-    
+
+        const yuck = new Modal('../../../images/New/WIP.png', "Work in progress...", "We were very very ambitious", null, "Exit", this, null);
+        const blah = yuck.createModal();
+        
+        this.tabs["overview"] = blah;
         /* TODO: */
     }
 
@@ -126,7 +134,7 @@ export default class AppModel {
         this.createIndustry();
         this.createAgriculture();
         this.createStructures();
-        this.createStructures();
+        this.createRobots();
         this.createOverview();
     }
 }
