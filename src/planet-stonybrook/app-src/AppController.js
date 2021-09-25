@@ -4,7 +4,7 @@
 
 export default class AppController {
     constructor () {
-        this.tab_names = ["industry", "agriculture", "structures", "overview"];
+        this.tab_names = ["industry", "agriculture", "structures", "robots", "overview"];
     }
 
     initController(appModel) {
