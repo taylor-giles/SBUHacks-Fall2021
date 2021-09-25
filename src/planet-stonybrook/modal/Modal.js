@@ -33,8 +33,8 @@ export default class Modal {
         img.src = this.src;
         img.id = "mod-" + this.count + "-img";
         if(!this.imgSize) {
-            img.width = this.imgSize;
-            img.height = this.imgSize;
+            img.style.width = this.imgSize;
+            img.style.height = this.imgSize;
         }
 
         //Create and add description text
