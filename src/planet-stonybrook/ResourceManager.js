@@ -1,11 +1,12 @@
 import * as INDUSTRY from './resource-objects/IndustryResources.js';
 import * as AGRICULTURE from './resource-objects/AgricultureResources.js'
+import { TICK_SPEED } from './classes/Resource.js';
 
 /**
  * This class handles all of the interactions between resources.
  * Runner of all passive resource gains.
  */
-export const TICK_SPEED = 1000;
+
 export const ALL_RESOURCES = INDUSTRY.ALL_INDUSTRY_RESOURCES.concat(AGRICULTURE.ALL_AGRICULTURE_RESOURCES);
 export default class ResourceManager {
     constructor(){
@@ -40,7 +41,7 @@ export default class ResourceManager {
     passiveResourceCheckAction(){
         //Check for passive resources
         for(const resource of ALL_RESOURCES){
-            if(resource.isPassive){
+            if(!resource.costs){
                 //Passively increment
                 resource.add(resource.passiveAmt);
             }

@@ -50,6 +50,7 @@
 
 .planet-stonybrook-tab:hover {
   background-color: var(--swatch-contrast-hover);
+  color: white;
 }
 
 #planet-workspace {
@@ -68,4 +69,5 @@
   top: 0%;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
 }

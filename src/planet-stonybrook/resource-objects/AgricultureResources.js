@@ -2,32 +2,15 @@ import Resource from "../classes/Resource.js";
 
 const AGRICULTURE_NAME = "Agriculture";
 
-export const WATER = new Resource("Water", "", "../../images/Water Card.png", AGRICULTURE_NAME, true, function(){
-    WATER.add(1);
-});
+export const WATER = new Resource("Water", "", "../../images/Water Card.png", "L", AGRICULTURE_NAME, null);
 
-export const CORN = new Resource("Corn", "", "../../../Images/Corn Card.png", AGRICULTURE_NAME, false, function(){
-    if(WATER.subtract(2)){
-        CORN.add(1);
-    } else {
-        //TODO: Show error message
-    }
-});
+const CORN_COSTS = [{"resource":WATER, "amount":2}];
+export const CORN = new Resource("Corn", "", "../../../Images/Corn Card.png", "Cobs", AGRICULTURE_NAME, CORN_COSTS);
 
-export const WHEAT = new Resource("Wheat", "", "../../../Images/Wheat Card.png", AGRICULTURE_NAME, false, function(){
-    if(WATER.subtract(4)){
-        WHEAT.add(1);
-    } else {
-        //TODO: Show error message
-    }
-});
+const WHEAT_COSTS = [{"resource":WATER, "amount":4}];
+export const WHEAT = new Resource("Wheat", "", "../../../Images/Wheat Card.png", "kg", AGRICULTURE_NAME, WHEAT_COSTS);
 
-export const BREAD = new Resource("Bread", "", "../../../Images/Bread Card.png", AGRICULTURE_NAME, false, function(){
-    if(OIL.subtract(5)){
-        FUEL.add(1);
-    } else {
-        //TODO: Show error message
-    }
-});
+const BREAD_COSTS = [{"resource":WATER, "amount":15}, {"resource":WHEAT, "amount":5}];
+export const BREAD = new Resource("Bread", "", "../../../Images/Bread Card.png", "Loaves", AGRICULTURE_NAME, BREAD_COSTS);
 
 export const ALL_AGRICULTURE_RESOURCES = [WATER, CORN, WHEAT, BREAD];

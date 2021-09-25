@@ -1,13 +1,9 @@
 .resource-card {
-  margin: 10px;
+  position: relative;
   padding: 20px;
   border-radius: 15px;
   width: 100%;
-}
-
-.description-container {
-    width: 30%;
-    padding: 10px;
+  box-sizing: border-box;
 }
 
 .horizontal-arrangement {
@@ -22,8 +18,17 @@
   justify-content: center;
 }
 
+.spacer {
+    flex: 1;
+}
+
+.description-container {
+    width: 30%;
+    padding: 10px;
+}
+
 .description-text {
-  font-size: 15pt;
+  font-size: 12pt;
 }
 
 .name-text{
@@ -32,4 +37,14 @@
 
 .amount-text {
     font-size: 18pt;
+    padding: 10px;
+}
+
+.build-container {
+    width: 200px;
+    text-align: right;
+}
+
+.cost-text {
+    font-size: 12pt;
 }
