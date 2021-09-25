@@ -12,17 +12,22 @@ export default class AppController {
         this.initHandlers();
     }
 
-    initHandlers() {
-        for(let tab_names of this.tab_names) {
-            let tab_id = "" + tab_names + "-tab";
+    /* Initiate the Tab clicking ability */
+    initTabs() {
+        for(let tab_name of this.tab_names) {
+            let tab_id = "" + tab_name + "-tab";
             let button = document.getElementById(tab_id);
 
             button.onmousedown = (event) => {
                 /* Update the list currently viewed */
-
+                this.appModel.loadTab(tab_name);
             }
             
         }
+    }
 
+
+    initHandlers() {
+        this.initTabs();
     }
 }

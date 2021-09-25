@@ -30,6 +30,8 @@ export class App {
         /* Now set the default tab - the industry tab */
         this.model.loadTab("industry");
 
+        /* Initiate the handlers */
+        this.controller.initHandlers();
 
         /* TODO: Call resource Manager  */
     }
