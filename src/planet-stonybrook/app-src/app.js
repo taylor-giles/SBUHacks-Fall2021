@@ -1,7 +1,7 @@
 import AppController from './AppController.js';
 import AppModel from './AppModel.js';
 import ResourceManager from '../ResourceManager.js';
-import HealthBar from '../overview/HealthBar.js';
+import Intro from '../introduction/intro.js';
 
 /*
 - Create resoource.js instance
@@ -13,6 +13,9 @@ export class App {
         /* Create instances */
         this.model = new AppModel();
         this.controller = new AppController();
+
+        this.intro = new Intro(this.model);
+        this.intro.createIntro();
 
         /* Setup the components */
         this.controller.initController(this.model);
